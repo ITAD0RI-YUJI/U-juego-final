@@ -13,8 +13,10 @@ def main():
         else:
             propiedades_pantalla()
 
-            character = main_character()
+            character = Main_character()
+            character.movimiento()
             character.dibujar()
+
 
             enemy.animacion()
             enemy.draw(screen)

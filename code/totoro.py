@@ -11,6 +11,8 @@ totoro_movimiento = [
 
 class Enemy(Sprite):
     def __init__(self, image_list, pos , animation_time):
+        self.vidas = 10
+
         self.images_animation = image_list
         self.current_image = 0
         self.personaje_imagen = self.images_animation[self.current_image]
