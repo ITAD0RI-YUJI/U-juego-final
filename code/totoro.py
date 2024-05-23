@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 from pygame.sprite import Sprite
 
-# Animación de Totoro estando quieto
+#  Animación de Totoro estando quieto
 totoro_movimiento = [
     pygame.image.load("../multimedia/img/totoro_img/enemy.png").convert_alpha(),
     pygame.image.load("../multimedia/img/totoro_img/enemy_peque.png").convert_alpha()

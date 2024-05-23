@@ -51,7 +51,7 @@ class Main_character(Sprite):
             self.cuenta_pasos += 1
 
         else:
-            screen.blit(quieto , (int(self.px), int(self.py)))
+            screen.blit(quieto , (int(self.px), int(self.py)) )
 
 
 

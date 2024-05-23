@@ -7,7 +7,7 @@ pos = [510, 150]
 
 #luffy quieto
 quieto = pygame.image.load("../multimedia/img/luffy_img/luffy.png").convert()
-quieto.set_colorkey([0 , 0 , 0]) #Quitar el fondo negro que pone pygame
+quieto.set_colorkey([0 , 0 , 0] ) #Quitar el fondo negro que pone pygame
 
 #imagenes luffy
 luffy_der = [pygame.image.load("../multimedia/img/luffy_img/l_der1.png"),
