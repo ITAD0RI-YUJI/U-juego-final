@@ -28,8 +28,6 @@ class Bat(Sprite):
         self.rect = self.personaje_imagen.get_rect()
         self.rect.y = random.randrange(alto_pantalla - self.rect.height)
         self.rect.x = random.randrange(ancho_pantalla - self.rect.width)
-
-        # self.rect.move_ip(pos)
         
         self.animation_time = animation_time  # Tiempo en milisegundos para cambiar la imagen
         self.last_update = pygame.time.get_ticks()
