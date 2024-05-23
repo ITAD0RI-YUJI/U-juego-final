@@ -1,5 +1,6 @@
 from pantalla import *
-from personaje import *
+from luffy import *
+from totoro import *
 from config import *
 
 def main():
