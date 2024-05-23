@@ -7,6 +7,7 @@ alto_pantalla = 400
 
 # Crear la pantalla y el reloj
 screen = pygame.display.set_mode([ancho_pantalla, alto_pantalla])
+pygame.display.set_caption('Luffy vs Totoro')
 clock = pygame.time.Clock()
 
 # Se coloca fuera de "propiedades_pantalla()" ya que esto se ejecutará, se llame o no a la función
