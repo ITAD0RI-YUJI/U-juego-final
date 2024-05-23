@@ -2,5 +2,6 @@ import pygame
 pygame.init()
 
 # Posición Totoro
-pos = [510, 150]
+pos_totoro = [510, 150]
+pos_bat = [50 , 50]
 
