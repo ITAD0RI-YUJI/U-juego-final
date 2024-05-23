@@ -8,6 +8,7 @@ alto_pantalla = 400
 # Crear la pantalla y el reloj
 screen = pygame.display.set_mode([ancho_pantalla, alto_pantalla])
 clock = pygame.time.Clock()
+pygame.display.set_caption('Luffy vs Totoro')
 
 # Se coloca fuera de "propiedades_pantalla()" ya que esto se ejecutará, se llame o no a la función
 pygame.mixer.music.load("../multimedia/audio/mainSound_gear_five.mp3")
