@@ -5,9 +5,8 @@ from deidara_masa import *
 from config import *
 
 def main():
-    enemy = Enemy(totoro_movimiento, pos_totoro , 500)  # 500 milisegundos para cambiar la imagen
+    enemy = Enemy(totoro_movimiento, pos_totoro , 800)  # 800 milisegundos para cambiar la imagen
     character = Main_character()
-    bat = Bat(bat_movimiento , pos_bat , 200)
 
     while True:
         for event in pygame.event.get():
@@ -22,8 +21,12 @@ def main():
             enemy.animacion()
             enemy.draw(screen)
             
-            bat.animacion()
-            bat.draw(screen)
+            bat = Bat(bat_movimiento , 200) #Colocar este dentro del while, así creerá nuevas instancias
+            add_array(bats , bat)
+
+            for bat in bats:
+                bat.animacion()
+                bat.draw(screen)
 
             pygame.display.flip()
 
