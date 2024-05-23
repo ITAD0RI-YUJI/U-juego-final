@@ -1,4 +1,4 @@
-from pantalla import *
+# from pantalla import *
 import pygame
 pygame.init()
 from pygame.sprite import Sprite
@@ -10,20 +10,28 @@ totoro_movimiento = [
 ]
 
 class Enemy(Sprite):
-    def __init__(self , images_array):
-        super().__init__()
-
-        self.vidas = 3
-        self.personaje_imagen = pygame.image.load("../multimedia/img/totoro_img/enemy.png").convert()
-        self.images_animation = images_array
-        self.personaje_imagen.set_colorkey([0 , 0 , 0]) #Quitar el fondo negro que pone pygame         
+    def __init__(self, image_list, pos , animation_time):
+        self.images_animation = image_list
+        self.current_image = 0
+        self.personaje_imagen = self.images_animation[self.current_image]
         self.rect = self.personaje_imagen.get_rect()
-        self.rect.move_ip([510, 150])
+
+        self.rect.move_ip(pos)
+        
+        self.animation_time = animation_time  # Tiempo en milisegundos para cambiar la imagen
+        self.last_update = pygame.time.get_ticks()
+        
         self.contador = 0
-
+    
     def animacion(self):
-        self.contador = (self.contador + 1) % len(self.images_animation)
-        self.personaje_imagen = self.images_animation[self.contador]
+        now = pygame.time.get_ticks()
 
-    def dibujar(self):
-        screen.blit(self.personaje_imagen, self.rect)  # Draw the image
+        if now - self.last_update > self.animation_time:
+            self.last_update = now
+        
+            self.contador = (self.contador + 1) % len(self.images_animation)
+            self.personaje_imagen = self.images_animation[self.contador]
+            self.rect = self.personaje_imagen.get_rect(topleft=self.rect.topleft)
+    
+    def draw(self, screen):
+        screen.blit(self.personaje_imagen, self.rect)
