@@ -29,14 +29,15 @@ def main():
                 enemy.animacion()
                 enemy.draw(screen)
                 
-                bat = Bat(bat_movimiento , 200) #Colocar este dentro del while, así creerá nuevas instancias
-                add_array(bats , bat)
+                bat = Bat(bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
+                add_array(bats_array , bat)
 
-                for bat in bats:
-                    bat.animacion()
-                    bat.draw(screen)
-                    bat.mover()
-
+                for x in bats_array:
+                    x.animacion()
+                    x.draw(screen)
+                    x.mover()
+                    x.delete(x)
+                
                 pygame.display.flip()
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ from pygame.sprite import Sprite
 pygame.init()
 
 #Arreglos para controlar la cant de pets
-bats = []
+bats_array = []
 
 #Animaciones de pets
 bat_movimiento = [
@@ -19,7 +19,7 @@ bat_movimiento = [
 
 #Clases de los pets
 class Bat(Sprite):
-    def __init__(self , bat_animation , animation_time):
+    def __init__(self , bat_animation , animation_time , bats):
         self.vida = 1
 
         self.images_animation = bat_animation
@@ -33,7 +33,8 @@ class Bat(Sprite):
         self.last_update = pygame.time.get_ticks()
         
         self.contador = 0
-        
+        self.bats_array = bats
+
         self.velocidad_x = 3
 
     def animacion(self):
@@ -51,9 +52,13 @@ class Bat(Sprite):
 
     def mover(self):
         self.rect.x -= self.velocidad_x
-        
+
+    def delete(self , delete_bat):
+        if self.rect.left <= 0:
+            self.bats_array.remove(delete_bat)
+
 
 #Funciones
 def add_array(array , pet):
-    if random.randint(0 , 100) % 10 == 0 and len(array) < 5:
+    if random.randint(0 , 100) % 10 == 0 and len(array) < 2:
         array.append(pet)
