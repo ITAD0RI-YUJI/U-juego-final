@@ -24,7 +24,7 @@ class Enemy(Sprite):
         self.last_update = pygame.time.get_ticks()
         
         self.contador = 0
-    
+        
     def animacion(self):
         now = pygame.time.get_ticks()
 

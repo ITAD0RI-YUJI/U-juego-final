@@ -35,6 +35,7 @@ def main():
                 for bat in bats:
                     bat.animacion()
                     bat.draw(screen)
+                    bat.mover()
 
                 pygame.display.flip()
 

@@ -27,12 +27,14 @@ class Bat(Sprite):
         self.personaje_imagen = self.images_animation[self.current_image]
         self.rect = self.personaje_imagen.get_rect()
         self.rect.y = random.randrange(alto_pantalla - self.rect.height)
-        self.rect.x = random.randrange(ancho_pantalla - self.rect.width)
+        self.rect.x = 680
         
         self.animation_time = animation_time  # Tiempo en milisegundos para cambiar la imagen
         self.last_update = pygame.time.get_ticks()
         
         self.contador = 0
+        
+        self.velocidad_x = 3
 
     def animacion(self):
         now = pygame.time.get_ticks()
@@ -47,6 +49,9 @@ class Bat(Sprite):
     def draw(self, screen):
         screen.blit(self.personaje_imagen, self.rect)
 
+    def mover(self):
+        self.rect.x -= self.velocidad_x
+        
 
 #Funciones
 def add_array(array , pet):
