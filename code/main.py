@@ -38,6 +38,7 @@ def main():
                     x.mover()
                     x.delete(x)
                 
+                
                 pygame.display.flip()
 
 if __name__ == "__main__":

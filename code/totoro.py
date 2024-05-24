@@ -37,3 +37,4 @@ class Enemy(Sprite):
     
     def draw(self, screen):
         screen.blit(self.personaje_imagen, self.rect)
+        
