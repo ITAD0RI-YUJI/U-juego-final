@@ -26,6 +26,12 @@ luffy_izq = [pygame.image.load("../multimedia/img/luffy_img/l_izq1.png"),
              pygame.image.load("../multimedia/img/luffy_img/l_izq7.png"),
              pygame.image.load("../multimedia/img/luffy_img/l_izq8.png")]
 
+salto = [pygame.image.load("../multimedia/img/luffy_img/l_salto1.png"),
+         pygame.image.load("../multimedia/img/luffy_img/l_salto2.png"),
+         pygame.image.load("../multimedia/img/luffy_img/l_salto3.png"),
+         pygame.image.load("../multimedia/img/luffy_img/l_salto4.png"),
+         pygame.image.load("../multimedia/img/luffy_img/l_salto5.png"),
+         pygame.image.load("../multimedia/img/luffy_img/l_salto6.png"),]
 
 class Main_character(Sprite):
     def __init__(self):
@@ -43,27 +49,30 @@ class Main_character(Sprite):
         self.direction_right = False
         self.direction_left = False
         self.quieto = True
-        
+        self.salto = False
+       
+        self.cuenta_salto = 10
         self.cuenta_pasos = 0
         self.px = 10
         self.py = 300
         self.ancho = 40
         
+        
         self.anim_speed = 6
 
     def movimiento(self):
-        #Moviemiento a la derecha
+        
         self.quieto = True
         
         keys = pygame.key.get_pressed()
-
+        #Moviemiento a la derecha
         if keys[pygame.K_RIGHT]:
             if self.px + self.velocidad + self.ancho <= ancho_pantalla:  # Verifica el borde derecho
                 self.px += self.velocidad
                 self.direction_right = True
                 self.direction_left = False
                 self.quieto = False
-
+        #Movimiento a la izquierda
         if keys[pygame.K_LEFT]:
             if self.px - self.velocidad >= 0:  # Verifica el borde izquierdo
                 self.px -= self.velocidad
@@ -71,8 +80,24 @@ class Main_character(Sprite):
                 self.direction_right = False
                 self.quieto = False
 
+        if not (self.salto):
+            if keys[pygame.K_UP]:
+                self.salto = True
+                self.izquierda = False
+                self.derecha = False
+                self.cuenta_pasos = 0
+        else:
+
+            if self.cuenta_salto >= -10:
+                self.py -= (self.cuenta_salto * abs(self.cuenta_salto)) * 0.3
+                self.cuenta_salto -= 1
+            else:
+                self.cuenta_salto = 10
+                self.salto = False
+
+
     def dibujar(self):
-         #Contador de pasos
+        #Contador de pasos
         if self.cuenta_pasos + 1 >= len(luffy_der) * self.anim_speed:
             self.cuenta_pasos = 0
 
@@ -83,6 +108,11 @@ class Main_character(Sprite):
         elif self.direction_left and not self.quieto:
             screen.blit(luffy_izq[self.cuenta_pasos // self.anim_speed], (int(self.px), int(self.py)))
             self.cuenta_pasos += 1
+
+        elif self.salto:
+            screen.blit(salto[self.cuenta_pasos // self.anim_speed], (int(self.px), int(self.py)))
+            self.cuenta_pasos += 1
+
 
         else:
             screen.blit(quieto , (int(self.px), int(self.py)) )
