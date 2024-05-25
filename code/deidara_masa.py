@@ -2,6 +2,7 @@ import pygame
 import random
 from pantalla import ancho_pantalla , alto_pantalla
 from config import *
+from pets_sprites import *
 
 from pygame.sprite import Sprite
 
@@ -9,13 +10,6 @@ pygame.init()
 
 #Arreglos para controlar la cant de pets
 bats_array = []
-
-#Animaciones de pets
-bat_movimiento = [
-    pygame.image.load("../multimedia/img/pets/bat/bat_uno.png").convert_alpha(),
-    pygame.image.load("../multimedia/img/pets/bat/bat_dos.png").convert_alpha(),
-    pygame.image.load("../multimedia/img/pets/bat/bat_tres.png").convert_alpha()
-]
 
 #Clases de los pets
 class Bat(Sprite):
