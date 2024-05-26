@@ -23,6 +23,8 @@ class Bat(Sprite):
         self.rect.y = random.randrange(alto_pantalla - self.rect.height)
         self.rect.x = 680
         
+        self.audio = pygame.mixer.Sound("../multimedia/audio/bat_sound.mp3")
+
         self.animation_time = animation_time  # Tiempo en milisegundos para cambiar la imagen
         self.last_update = pygame.time.get_ticks()
         
@@ -46,6 +48,7 @@ class Bat(Sprite):
 
     def mover(self):
         self.rect.x -= self.velocidad_x
+        self.audio.play()
 
     def delete(self , delete_bat):
         if self.rect.left <= 0:
