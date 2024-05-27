@@ -12,7 +12,8 @@ pygame.init()
 #CLase abstracta para los pets
 class Pet(ABC , Sprite):
     def __init__(self , animation , animation_time , pet):
-        
+        self.vida = 0
+
         self.images_animation = animation
         self.current_image = 0
         self.personaje_imagen = self.images_animation[self.current_image]
@@ -40,12 +41,15 @@ class Pet(ABC , Sprite):
     def delete(self):
         pass
 
+    @abstractmethod
+    def appear(self):
+        pass
 
 #Clases de los pets
 class Bat(Pet):
-    def __init__(self , animation , animation_time , pet):
+    def __init__(self , vida , animation , animation_time , pet):
         super().__init__(animation, animation_time, pet)
-        self.vida = 1
+        self.vida = vida
 
         self.rect.y = random.randrange(alto_pantalla - self.rect.height)
         self.rect.x = 680
@@ -74,12 +78,23 @@ class Bat(Pet):
     def delete(self , delete_bat):
         if self.rect.left <= 0:
             self.bats_array.remove(delete_bat)
+    
+    def appear(self , screen , array):
+        for x in array:
+            x.animacion()
+            x.draw(screen)
+            x.mover()
+            x.delete(x)
+    
+    def add_array(self , array , pet):
+        if random.randint(0 , 100) % 10 == 0 and len(array) < 2:
+            array.append(pet)
 
 
 class Gusano(Pet):
-    def __init__(self, animation, animation_time, pet):
+    def __init__(self, vida , animation, animation_time, pet):
         super().__init__(animation, animation_time, pet)
-        self.vida = 2
+        self.vida = vida
 
         self.rect.y = 320
         self.rect.x = random.randrange(ancho_pantalla - self.rect.height)
@@ -108,3 +123,14 @@ class Gusano(Pet):
     def delete(self , delete_bat):
         if self.rect.left <= 0:
             self.bats_array.remove(delete_bat)
+    
+    def appear(self , screen , array):
+        for x in array:
+            x.animacion()
+            x.draw(screen)
+            x.mover()
+            x.delete(x)
+    
+    def add_array(self , array , pet):
+        if random.randint(0 , 100) % 10 == 0 and len(array) < 1:
+            array.append(pet)
