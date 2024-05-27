@@ -3,6 +3,7 @@ from luffy import *
 from totoro import *
 from deidara_masa import *
 from config import *
+from petActions import *
 from inicio import *
 
 #Instanciando la clase de menu
@@ -31,12 +32,11 @@ def main():
                 
                 bat = Bat(bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
                 add_array(bats_array , bat)
+                appear(bats_array)
 
-                for x in bats_array:
-                    x.animacion()
-                    x.draw(screen)
-                    x.mover()
-                    x.delete(x)
+                gusano = Gusano(gusano_movimento , 200 , gusanos_array)
+                add_array(gusanos_array , gusano)
+                appear(gusanos_array)
                 
                 
                 pygame.display.flip()
