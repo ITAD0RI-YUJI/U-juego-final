@@ -30,13 +30,13 @@ def main():
                 enemy.animacion()
                 enemy.draw(screen)
                 
-                bat = Bat(bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
-                add_array(bats_array , bat)
-                appear(bats_array)
+                bat = Bat(1 , bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
+                bat.add_array(bats_array , bat)
+                bat.appear(screen , bats_array)
 
-                gusano = Gusano(gusano_movimento , 200 , gusanos_array)
-                add_array(gusanos_array , gusano)
-                appear(gusanos_array)
+                gusano = Gusano(2 , gusano_movimento , 200 , gusanos_array)
+                gusano.add_array(gusanos_array , gusano)
+                gusano.appear(screen , gusanos_array)
                 
                 
                 pygame.display.flip()
