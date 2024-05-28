@@ -38,6 +38,7 @@ class Main_character(Sprite):
         
         #Velicudad de pasar de imagen en imagen
         self.anim_speed = 6
+        self.anim_speed_atack = 4
 
     def movimiento(self):
         #Bandera para controlar si luffy esta quieto
@@ -99,7 +100,7 @@ class Main_character(Sprite):
         if self.cuenta_pasos + 1 >= len(luffy_der) * self.anim_speed:
             self.cuenta_pasos = 0
 
-        if self.cuenta_ataques +1 >= len(ataquez) * self.anim_speed:
+        if self.cuenta_ataques +1 >= len(ataquez) * self.anim_speed_atack:
             self.parar = False
             self.cuenta_ataques = 0
 
@@ -117,7 +118,7 @@ class Main_character(Sprite):
             self.cuenta_pasos += 1
 
         elif self.ataquez and self.parar:
-            screen.blit(ataquez[self.cuenta_ataques // self.anim_speed], (int(self.px), int(self.py)))
+            screen.blit(ataquez[self.cuenta_ataques // self.anim_speed_atack], (int(self.px), int(self.py)))
             self.cuenta_ataques += 1
 
         #Para cuando luffy este quieto 
