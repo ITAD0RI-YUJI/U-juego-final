@@ -75,20 +75,20 @@ class Bat(Pet):
         self.rect.x -= self.velocidad_x
         # self.audio.play()
 
-    def delete(self , delete_bat):
-        if self.rect.left <= 0:
-            self.bats_array.remove(delete_bat)
-    
+    def add_array(self , array , pet):
+        if random.randint(0 , 100) % 10 == 0 and len(array) < 2:
+            array.append(pet)
+
     def appear(self , screen , array):
         for x in array:
             x.animacion()
             x.draw(screen)
             x.mover()
             x.delete(x)
-    
-    def add_array(self , array , pet):
-        if random.randint(0 , 100) % 10 == 0 and len(array) < 2:
-            array.append(pet)
+            
+    def delete(self , delete_bat):
+        if self.rect.left <= 0:
+            self.bats_array.remove(delete_bat)
 
 
 class Gusano(Pet):
@@ -96,7 +96,7 @@ class Gusano(Pet):
         super().__init__(animation, animation_time, pet)
         self.vida = vida
 
-        self.rect.y = 320
+        self.rect.y = 290
         self.rect.x = random.randrange(ancho_pantalla - self.rect.height)
         
         self.audio = pygame.mixer.Sound("../multimedia/audio/bat_sound.mp3")
@@ -120,17 +120,17 @@ class Gusano(Pet):
         self.rect.x -= self.velocidad_x
         # self.audio.play()
 
-    def delete(self , delete_bat):
-        if self.rect.left <= 0:
-            self.bats_array.remove(delete_bat)
-    
+    def add_array(self , array , pet):
+        if random.randint(0 , 100) % 10 == 0 and len(array) < 1:
+            array.append(pet)
+
     def appear(self , screen , array):
         for x in array:
             x.animacion()
             x.draw(screen)
             x.mover()
             x.delete(x)
-    
-    def add_array(self , array , pet):
-        if random.randint(0 , 100) % 10 == 0 and len(array) < 1:
-            array.append(pet)
+
+    def delete(self , delete_bat):
+        if self.rect.left <= 0:
+            self.bats_array.remove(delete_bat) 
