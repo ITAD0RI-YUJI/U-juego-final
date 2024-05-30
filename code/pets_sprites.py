@@ -9,12 +9,12 @@ bat_movimiento = [
 ]
 
 gusano_movimento = [
-    # pygame.image.load("../multimedia/img/pets/cien/warm1.png").convert_alpha(),
-    # pygame.image.load("../multimedia/img/pets/cien/warm2.png").convert_alpha(),
-    # pygame.image.load("../multimedia/img/pets/cien/warm3.png").convert_alpha(),
-    # pygame.image.load("../multimedia/img/pets/cien/warm4.png").convert_alpha(),
-    # pygame.image.load("../multimedia/img/pets/cien/warm5.png").convert_alpha(),
-    # pygame.image.load("../multimedia/img/pets/cien/warm6.png").convert_alpha(),
+    pygame.image.load("../multimedia/img/pets/cien/warm1.png").convert_alpha(),
+    pygame.image.load("../multimedia/img/pets/cien/warm2.png").convert_alpha(),
+    pygame.image.load("../multimedia/img/pets/cien/warm3.png").convert_alpha(),
+    pygame.image.load("../multimedia/img/pets/cien/warm4.png").convert_alpha(),
+    pygame.image.load("../multimedia/img/pets/cien/warm5.png").convert_alpha(),
+    pygame.image.load("../multimedia/img/pets/cien/warm6.png").convert_alpha(),
     pygame.image.load("../multimedia/img/pets/cien/warm7.png").convert_alpha(),
     pygame.image.load("../multimedia/img/pets/cien/warm8.png").convert_alpha(),
     pygame.image.load("../multimedia/img/pets/cien/warm9.png").convert_alpha(),
