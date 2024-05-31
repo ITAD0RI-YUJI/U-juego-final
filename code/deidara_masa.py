@@ -97,8 +97,10 @@ class Gusano(Pet):
         self.vida = vida
         self.mitad = ancho_pantalla//2
         self.rect.y = 290
-        self.rect.x = random.randrange(ancho_pantalla//2 ,  ancho_pantalla - self.rect.height)
-        
+
+        self.mitad_pantalla = ancho_pantalla // 2
+        self.rect.x = random.randrange(self.mitad_pantalla, ancho_pantalla - self.rect.height)
+
         self.audio = pygame.mixer.Sound("../multimedia/audio/bat_sound.mp3")
 
         self.velocidad_x = 2
