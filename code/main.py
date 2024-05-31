@@ -3,7 +3,7 @@ from luffy import *
 from totoro import *
 from deidara_masa import *
 from config import *
-from petActions import *
+from funcionesComunes import *
 from inicio import *
 
 #Instanciando la clase de menu
@@ -41,7 +41,8 @@ def main():
                 gusano.add_array(gusanos_array , gusano)
                 gusano.appear(screen , gusanos_array)
                 
-                
+                colision(character , bats_array)
+
                 pygame.display.flip()
 
 if __name__ == "__main__":
