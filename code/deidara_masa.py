@@ -95,11 +95,12 @@ class Gusano(Pet):
     def __init__(self, vida , animation, animation_time, pet):
         super().__init__(animation, animation_time, pet)
         self.vida = vida
-
+        self.mitad = ancho_pantalla//2
         self.rect.y = 290
+
         self.mitad_pantalla = ancho_pantalla // 2
         self.rect.x = random.randrange(self.mitad_pantalla, ancho_pantalla - self.rect.height)
-        
+
         self.audio = pygame.mixer.Sound("../multimedia/audio/bat_sound.mp3")
 
         self.velocidad_x = 2
@@ -109,7 +110,7 @@ class Gusano(Pet):
 
             if now - self.last_update > self.animation_time:
                 self.last_update = now
-            
+                                            
                 self.contador = (self.contador + 1) % len(self.images_animation)
                 self.personaje_imagen = self.images_animation[self.contador]
                 self.rect = self.personaje_imagen.get_rect(topleft=self.rect.topleft)

@@ -41,10 +41,12 @@ def main():
                 gusano.add_array(gusanos_array , gusano)
                 gusano.appear(screen , gusanos_array)
                 
+
                 colision(character , bats_array)
                 colision(character , gusanos_array)
+
 
                 pygame.display.flip()
 
 if __name__ == "__main__":
-    main()
+    main()      
