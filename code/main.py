@@ -43,6 +43,7 @@ def main():
                 
 
                 colision(character , bats_array)
+                colision(character , gusanos_array)
 
 
                 pygame.display.flip()
