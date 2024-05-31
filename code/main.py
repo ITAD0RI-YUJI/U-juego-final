@@ -27,6 +27,9 @@ def main():
                 character.movimiento()
                 character.dibujar()
 
+                vidas = sombrero()
+                vidas.mostrar_vida()
+
                 enemy.animacion()
                 enemy.draw(screen)
                 
