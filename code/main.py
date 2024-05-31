@@ -42,7 +42,9 @@ def main():
                 gusano.appear(screen , gusanos_array)
                 
                 
+
+
                 pygame.display.flip()
 
 if __name__ == "__main__":
-    main()
+    main()      
