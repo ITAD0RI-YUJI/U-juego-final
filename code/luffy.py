@@ -72,9 +72,6 @@ class Main_character(Sprite):
             self.quieto = False
             self.parar = True
 
-        
-            
-
         #Si luffy esta saltando, no entra la solicitud de salto
         if not (self.salto):
             if keys[pygame.K_UP]:
@@ -124,3 +121,20 @@ class Main_character(Sprite):
         #Para cuando luffy este quieto 
         else:
             screen.blit(quieto , (int(self.px), int(self.py)) )
+
+
+class sombrero(Main_character):
+    def __init__(self):
+        super().__init__()
+
+        #Imagen de la vida de Luffy
+        self.vida_image = pygame.image.load("../multimedia/img/luffy_img/luffy_live.png").convert_alpha()
+        
+        self.rect = self.vida_image.get_rect()
+        self.rect.x = 0
+        self.rect.y = 0
+    
+    def mostrar_vida(self):
+        for i in range(self.vidas):
+            screen.blit(self.vida_image , self.rect)
+            self.rect.x += self.rect.width
