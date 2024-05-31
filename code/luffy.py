@@ -1,7 +1,6 @@
 from pantalla import *
 from Sprites_luffy import *
 import pygame
-import time
 pygame.init()
 from pygame.sprite import Sprite
 
@@ -91,6 +90,8 @@ class Main_character(Sprite):
                 self.cuenta_salto = 10
                 self.salto = False
 
+        # Actualizar la posición del rectángulo de Luffy
+        self.rect.topleft = (self.px, self.py) 
 
     def dibujar(self):
         #Contador de pasos
@@ -126,7 +127,7 @@ class Main_character(Sprite):
 class sombrero(Main_character):
     def __init__(self):
         super().__init__()
-
+    
         #Imagen de la vida de Luffy
         self.vida_image = pygame.image.load("../multimedia/img/luffy_img/luffy_live.png").convert_alpha()
         
