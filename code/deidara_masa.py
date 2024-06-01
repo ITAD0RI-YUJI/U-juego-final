@@ -97,7 +97,7 @@ class Gusano(Pet):
         self.vida = vida
         self.mitad = ancho_pantalla//2
         self.rect.y = 290
-
+        
         self.mitad_pantalla = ancho_pantalla // 2
         self.rect.x = random.randrange(self.mitad_pantalla, ancho_pantalla - self.rect.height)
 
@@ -114,7 +114,10 @@ class Gusano(Pet):
                 self.contador = (self.contador + 1) % len(self.images_animation)
                 self.personaje_imagen = self.images_animation[self.contador]
                 self.rect = self.personaje_imagen.get_rect(topleft=self.rect.topleft)
-        
+
+                if self.contador == 12:
+                    self.contador = 6
+                    
     def draw(self, screen):
         screen.blit(self.personaje_imagen, self.rect)
 
