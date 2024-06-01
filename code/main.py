@@ -30,7 +30,7 @@ def main():
                 character.movimiento()
                 character.dibujar()
 
-                vidas.mostrar_vida()
+                vidas.dibujar_vidas()
 
                 enemy.animacion()
                 enemy.draw(screen)
@@ -44,8 +44,8 @@ def main():
                 gusano.appear(screen , gusanos_array)
                 
 
-                colision(character , bats_array)
-                colision(character , gusanos_array)
+                colision(character , bats_array , vidas_array_luffy)
+                colision(character , gusanos_array , vidas_array_luffy)
                 
 
                 pygame.display.flip()
