@@ -125,7 +125,7 @@ class Main_character(Sprite):
 
 
 class sombrero(Main_character):
-    def __init__(self):
+    def __init__(self , array):
         super().__init__()
     
         #Imagen de la vida de Luffy
@@ -134,8 +134,15 @@ class sombrero(Main_character):
         self.rect = self.vida_image.get_rect()
         self.rect.x = 0
         self.rect.y = 0
-    
-    def mostrar_vida(self):
-        for i in range(self.vida):
-            screen.blit(self.vida_image , self.rect)
-            self.rect.x += self.rect.width 
+
+        self.hat_array = array
+
+    def vidas_array_add(self):
+        for x in range(self.vida):
+            self.hat_array.append(self.vida_image)
+
+    def dibujar_vidas(self):
+        for i in range(len(self.hat_array)):
+            pos_x = 10 + i * (self.rect.width + 10)  # Posición X con un espaciado de 10 píxeles entre las vidas
+            pos_y = 10 
+            screen.blit(self.hat_array[i], (pos_x, pos_y))

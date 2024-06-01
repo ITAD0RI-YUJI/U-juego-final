@@ -17,6 +17,9 @@ def main():
         enemy = Enemy(totoro_movimiento, pos_totoro , 800)  # 800 milisegundos para cambiar la imagen
         character = Main_character()
 
+        vidas = sombrero(vidas_array_luffy)
+        vidas.vidas_array_add()
+        
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -27,8 +30,7 @@ def main():
                 character.movimiento()
                 character.dibujar()
 
-                vidas = sombrero()
-                vidas.mostrar_vida()
+                vidas.dibujar_vidas()
 
                 enemy.animacion()
                 enemy.draw(screen)
@@ -42,8 +44,8 @@ def main():
                 gusano.appear(screen , gusanos_array)
                 
 
-                colision(character , bats_array)
-                colision(character , gusanos_array)
+                colision(character , bats_array , vidas_array_luffy)
+                colision(character , gusanos_array , vidas_array_luffy)
                 
 
                 pygame.display.flip()
