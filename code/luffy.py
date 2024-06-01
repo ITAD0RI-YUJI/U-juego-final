@@ -136,8 +136,6 @@ class sombrero(Main_character):
         self.rect.y = 0
     
     def mostrar_vida(self):
-
-
         for i in range(self.vida):
             screen.blit(self.vida_image , self.rect)
             self.rect.x += self.rect.width 
