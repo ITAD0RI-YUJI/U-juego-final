@@ -22,3 +22,13 @@ def colision(objeto_chocado , objeto_chocando_arreglo , array_vidas):
 
             if objeto_chocado.vida <= 0:
                 sys.exit()
+
+def colision2(objeto_chocado , objeto_chocando, array_vidas):
+    
+    if objeto_chocado.rect.colliderect(objeto_chocando.rect):
+        objeto_chocado.vida -= 1
+        array_vidas.pop()
+        print(objeto_chocado.vida)
+
+        if objeto_chocado.vida <= 0:
+            sys.exit()
