@@ -15,6 +15,7 @@ class Main_character(Sprite):
         self.quieto = quieto
         self.quieto.set_colorkey([0 , 0 , 0]) #Quitar el fondo negro que pone pygame         
         self.rect = self.quieto.get_rect()
+        
 
         #Donde aparecera luffy en la pantalla
         self.rect.move_ip([10, 300])
@@ -25,7 +26,7 @@ class Main_character(Sprite):
         self.ataquez = False
         self.salto = False
         self.parar = False
-
+    
         #Variales numericas para controlar diferentes acciones de luffy 
         self.cuenta_ataques = 0
         self.cuenta_salto = 10
@@ -37,7 +38,7 @@ class Main_character(Sprite):
         
         #Velicudad de pasar de imagen en imagen
         self.anim_speed = 6
-        self.anim_speed_atack = 4
+        self.anim_speed_atack = 6
 
     def movimiento(self):
         #Bandera para controlar si luffy esta quieto
@@ -91,7 +92,7 @@ class Main_character(Sprite):
                 self.salto = False
 
         # Actualizar la posición del rectángulo de Luffy
-        self.rect.topleft = (self.px, self.py) 
+        self.rect.topleft = (self.px, self.py)
 
     def dibujar(self):
         #Contador de pasos
