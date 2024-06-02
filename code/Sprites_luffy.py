@@ -38,4 +38,4 @@ ataquez = [pygame.image.load("../multimedia/img/luffy_img/l_poder1.png"),
            pygame.image.load("../multimedia/img/luffy_img/l_poder6.png"),
            pygame.image.load("../multimedia/img/luffy_img/l_poder7.png"),]
 
-disparoz= [pygame.image.load("../multimedia/img/luffy_img/disparo.png"),]
+disparoz= pygame.image.load("../multimedia/img/luffy_img/disparo.png")

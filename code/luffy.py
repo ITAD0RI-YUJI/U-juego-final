@@ -4,6 +4,7 @@ import pygame
 pygame.init()
 import sys
 from pygame.sprite import Sprite
+from pygame.sprite import Group
 
 
 
@@ -39,10 +40,16 @@ class Main_character(Sprite):
         
         #Velicudad de pasar de imagen en imagen
         self.anim_speed = 6
-        self.anim_speed_atack = 6
 
         #Sonido de daño
         self.luffy_sound = pygame.mixer.Sound("../multimedia/audio/luffy_ouch.mp3")
+
+        # Grupo para manejar los disparos
+        self.disparos = Group()
+
+        # Variables de cooldown para la habilidad de ataque
+        self.cooldown_total = 300  #tiempo de cooldown en frames
+        self.cooldown_timer = 0
 
 
     def movimiento(self):
@@ -70,12 +77,13 @@ class Main_character(Sprite):
                 self.parar = False
                 self.cuenta_ataques = 0
 
-        if keys[pygame.K_z]:
+        if keys[pygame.K_z] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and self.cooldown_timer == 0:
             self.ataquez = True
             self.direction_left = False
             self.direction_right = False
             self.quieto = False
             self.parar = True
+            self.cooldown_timer = self.cooldown_total  # Reiniciar el temporizador de cooldown
 
         #Si luffy esta saltando, no entra la solicitud de salto
         if not (self.salto):
@@ -99,14 +107,29 @@ class Main_character(Sprite):
         # Actualizar la posición del rectángulo de Luffy
         self.rect.topleft = (self.px, self.py)
 
+    def update_disparos(self):
+        self.disparos.update()
+        # Disminuir el temporizador de cooldown
+        if self.cooldown_timer > 0:
+            self.cooldown_timer -= 1
+
+        for disparo in self.disparos:
+            if disparo.rect.x > ancho_pantalla:
+                disparo.kill()
+
+
+
     def dibujar(self):
         #Contador de pasos
         if self.cuenta_pasos + 1 >= len(luffy_der) * self.anim_speed:
             self.cuenta_pasos = 0
 
-        if self.cuenta_ataques +1 >= len(ataquez) * self.anim_speed_atack:
+        if self.cuenta_ataques +1 >= len(ataquez) * self.anim_speed:
+            nuevo_disparo = Disparo(self.px, self.py)
+            self.disparos.add(nuevo_disparo)
             self.parar = False
             self.cuenta_ataques = 0
+
 
         #Condicinales para movimientos de luffy 
         if self.direction_right and not self.quieto:
@@ -122,12 +145,17 @@ class Main_character(Sprite):
             self.cuenta_pasos += 1
 
         elif self.ataquez and self.parar:
-            screen.blit(ataquez[self.cuenta_ataques // self.anim_speed_atack], (int(self.px), int(self.py)))
+            screen.blit(ataquez[self.cuenta_ataques // self.anim_speed], (int(self.px), int(self.py)))
             self.cuenta_ataques += 1
 
         #Para cuando luffy este quieto 
         else:
             screen.blit(quieto , (int(self.px), int(self.py)) )
+
+        # Dibujar disparos
+        self.disparos.draw(screen)
+
+
 
     def colision(self , objeto_chocando_arreglo , array_vidas):
         for objeto_chocando in objeto_chocando_arreglo:
@@ -165,3 +193,16 @@ class Sombrero(Main_character):
             pos_x = 10 + i * (self.rect.width + 10)  # Posición X con un espaciado de 10 píxeles entre las vidas
             pos_y = 10 
             screen.blit(self.hat_array[i], (pos_x, pos_y))
+
+class Disparo(pygame.sprite.Sprite):
+    def __init__(self, px, py):
+        super().__init__()
+
+        self.image = disparoz
+        self.rect = self.image.get_rect()
+        self.rect.x = px + 50
+        self.rect.y = py
+        self.velocidad = 5
+
+    def update(self):
+        self.rect.x += self.velocidad

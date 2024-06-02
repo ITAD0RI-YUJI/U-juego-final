@@ -29,7 +29,8 @@ def main():
 
                 character.movimiento()
                 character.dibujar()
-
+                character.update_disparos()
+                
                 vidas.dibujar_vidas()
 
                 enemy.animacion()
