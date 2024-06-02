@@ -1,29 +1,16 @@
 # from pantalla import *
 import pygame
 pygame.init()
-from pygame.sprite import Sprite
+from objetoAbstracto import *
+ 
+class Enemy(Dad):
+    def __init__(self , vida , animation , animation_time , pet):
+        super().__init__(animation, animation_time, pet)
 
-# Animación de Totoro estando quieto
-totoro_movimiento = [
-    pygame.image.load("../multimedia/img/totoro_img/enemy.png").convert_alpha(),
-    pygame.image.load("../multimedia/img/totoro_img/enemy_peque.png").convert_alpha()
-]
+        self.vidas = vida
 
-class Enemy(Sprite):
-    def __init__(self, image_list, pos , animation_time):
-        self.vidas = 10
-
-        self.images_animation = image_list
-        self.current_image = 0
-        self.personaje_imagen = self.images_animation[self.current_image]
-        self.rect = self.personaje_imagen.get_rect()
-
-        self.rect.move_ip(pos)
-        
-        self.animation_time = animation_time  # Tiempo en milisegundos para cambiar la imagen
-        self.last_update = pygame.time.get_ticks()
-        
-        self.contador = 0
+        self.rect.y = 150
+        self.rect.x = 510   
         
     def animacion(self):
         now = pygame.time.get_ticks()
@@ -37,4 +24,8 @@ class Enemy(Sprite):
     
     def draw(self, screen):
         screen.blit(self.personaje_imagen, self.rect)
-        
+    
+    def colision(self , objeto_chocando):
+        if objeto_chocando.rect.colliderect(self.rect):
+            self.vida -= 1
+            print("Totoro: " , objeto_chocando.vida)

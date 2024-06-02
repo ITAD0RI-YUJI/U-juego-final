@@ -2,9 +2,9 @@ from pantalla import *
 from luffy import *
 from totoro import *
 from deidara_masa import *
-from config import *
 from funcionesComunes import *
 from inicio import *
+from pets_sprites import *
 
 #Instanciando la clase de menu
 inicio = Menu()
@@ -14,10 +14,10 @@ iniciar = inicio.iniciar_juego()
 def main():
     
     if iniciar:
-        enemy = Enemy(totoro_movimiento, pos_totoro , 800)  # 800 milisegundos para cambiar la imagen
+        enemy = Enemy(5 , totoro_movimiento , 800 , None)  # 800 milisegundos para cambiar la imagen
         character = Main_character()
 
-        vidas = sombrero(vidas_array_luffy)
+        vidas = Sombrero(vidas_array_luffy)
         vidas.vidas_array_add()
         
         while True:
@@ -34,20 +34,21 @@ def main():
 
                 enemy.animacion()
                 enemy.draw(screen)
+                enemy.colision(character)
                 
                 bat = Bat(1 , bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
                 bat.add_array(bats_array , bat)
                 bat.appear(screen , bats_array)
+                # bat.colision(bala)
 
                 gusano = Gusano(2 , gusano_movimento , 200 , gusanos_array)
                 gusano.add_array(gusanos_array , gusano)
                 gusano.appear(screen , gusanos_array)
+                # gusano.colision(bala)
                 
+                character.colision(bats_array , vidas_array_luffy)
+                character.colision(gusanos_array , vidas_array_luffy)
 
-                
-                colision(character , bats_array , vidas_array_luffy)
-                colision(character , gusanos_array , vidas_array_luffy)
-                colision2(character, enemy, vidas_array_luffy)
                 
                 pygame.display.flip()
 
