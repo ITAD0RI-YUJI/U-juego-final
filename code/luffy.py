@@ -40,6 +40,10 @@ class Main_character(Sprite):
         self.anim_speed = 6
         self.anim_speed_atack = 6
 
+        #Sonido de daño
+        self.luffy_sound = pygame.mixer.Sound("../multimedia/audio/luffy_ouch.mp3")
+
+
     def movimiento(self):
         #Bandera para controlar si luffy esta quieto
         self.quieto = True
