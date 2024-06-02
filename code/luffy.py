@@ -2,6 +2,7 @@ from pantalla import *
 from Sprites_luffy import *
 import pygame
 pygame.init()
+import sys
 from pygame.sprite import Sprite
 
 
@@ -128,8 +129,21 @@ class Main_character(Sprite):
         else:
             screen.blit(quieto , (int(self.px), int(self.py)) )
 
+    def colision(self , objeto_chocando_arreglo , array_vidas):
+        for objeto_chocando in objeto_chocando_arreglo:
+            
+            if self.rect.colliderect(objeto_chocando.rect):
+                self.vida -= 1
+                objeto_chocando_arreglo.remove(objeto_chocando)
+                self.luffy_sound.play()
+                array_vidas.pop()
+                print("Luffy: " , self.vida)
 
-class sombrero(Main_character):
+                if self.vida <= 0:
+                    sys.exit()
+
+
+class Sombrero(Main_character):
     def __init__(self , array):
         super().__init__()
     

@@ -1,6 +1,12 @@
 import pygame
 pygame.init()
 
+# Animación de Totoro estando quieto
+totoro_movimiento = [
+    pygame.image.load("../multimedia/img/totoro_img/enemy.png").convert_alpha(),
+    pygame.image.load("../multimedia/img/totoro_img/enemy_peque.png").convert_alpha()
+]
+
 #Animaciones de pets
 bat_movimiento = [
     pygame.image.load("../multimedia/img/pets/bat/bat_uno.png").convert_alpha(),

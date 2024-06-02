@@ -1,52 +1,13 @@
 import pygame
 import random
 from pantalla import ancho_pantalla , alto_pantalla
-from config import *
-from pets_sprites import *
-from abc import ABC, abstractmethod
-
-from pygame.sprite import Sprite
+from objetoAbstracto import *
 
 pygame.init()
 
-#CLase abstracta para los pets
-class Pet(ABC , Sprite):
-    def __init__(self , animation , animation_time , pet):
-        self.vida = 0
-
-        self.images_animation = animation
-        self.current_image = 0
-        self.personaje_imagen = self.images_animation[self.current_image]
-        self.rect = self.personaje_imagen.get_rect()
-    
-        self.animation_time = animation_time  # Tiempo en milisegundos para cambiar la imagen
-        self.last_update = pygame.time.get_ticks()
-        
-        self.contador = 0
-        self.bats_array = pet
-
-    @abstractmethod
-    def animacion(self):
-        pass
-
-    @abstractmethod
-    def draw(self):
-        pass
-
-    @abstractmethod
-    def mover(self):
-       pass
-
-    @abstractmethod
-    def delete(self):
-        pass
-
-    @abstractmethod
-    def appear(self):
-        pass
 
 #Clases de los pets
-class Bat(Pet):
+class Bat(Dad):
     def __init__(self , vida , animation , animation_time , pet):
         super().__init__(animation, animation_time, pet)
         self.vida = vida
@@ -90,8 +51,13 @@ class Bat(Pet):
         if self.rect.left <= 0:
             self.bats_array.remove(delete_bat)
 
+    def colision(self , objeto_chocando):
+        if objeto_chocando.rect.colliderect(self.rect):
+            self.vida -= 1
+            print("Totoro: " , objeto_chocando.vida)
 
-class Gusano(Pet):
+
+class Gusano(Dad):
     def __init__(self, vida , animation, animation_time, pet):
         super().__init__(animation, animation_time, pet)
         self.vida = vida
@@ -139,3 +105,8 @@ class Gusano(Pet):
     def delete(self , delete_bat):
         if self.rect.left <= 0:
             self.bats_array.remove(delete_bat) 
+    
+    def colision(self , objeto_chocando):
+        if objeto_chocando.rect.colliderect(self.rect):
+            self.vida -= 1
+            print("Totoro: " , objeto_chocando.vida)
