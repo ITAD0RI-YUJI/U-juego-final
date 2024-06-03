@@ -7,7 +7,6 @@ from pygame.sprite import Sprite
 from pygame.sprite import Group
 
 
-
 class Main_character(Sprite):
     def __init__(self):
         super().__init__()
@@ -18,7 +17,6 @@ class Main_character(Sprite):
         self.quieto.set_colorkey([0 , 0 , 0]) #Quitar el fondo negro que pone pygame         
         self.rect = self.quieto.get_rect()
         
-
         #Donde aparecera luffy en la pantalla
         self.rect.move_ip([10, 300])
 
@@ -36,7 +34,6 @@ class Main_character(Sprite):
         self.px = 10
         self.py = 300
         self.ancho = 40
-
         
         #Velicudad de pasar de imagen en imagen
         self.anim_speed = 6
@@ -50,7 +47,6 @@ class Main_character(Sprite):
         # Variables de cooldown para la habilidad de ataque
         self.cooldown_total = 100  #tiempo de cooldown en frames
         self.cooldown_timer = 0
-
 
     def movimiento(self):
         #Bandera para controlar si luffy esta quieto
@@ -120,14 +116,13 @@ class Main_character(Sprite):
             for objeto_chocando in bicho_array:
                 if disparo.rect.colliderect(objeto_chocando.rect):
                     bicho.vida -= 1
+                    bicho.audio.play()
                     print("Gusano: " , bicho.vida)
 
                     if bicho.vida <= 0:
                         bicho_array.remove(objeto_chocando)
                     
                     disparo.kill()
-
-
 
     def dibujar(self):
         #Contador de pasos
@@ -141,7 +136,6 @@ class Main_character(Sprite):
             
             self.parar = False
             self.cuenta_ataques = 0
-
 
         #Condicinales para movimientos de luffy 
         if self.direction_right and not self.quieto:
@@ -166,8 +160,6 @@ class Main_character(Sprite):
 
         # Dibujar disparos
         self.disparos.draw(screen)
-
-
 
     def colision(self , objeto_chocando_arreglo , array_vidas):
         for objeto_chocando in objeto_chocando_arreglo:

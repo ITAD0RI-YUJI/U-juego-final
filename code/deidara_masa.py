@@ -15,7 +15,7 @@ class Bat(Dad):
         self.rect.y = random.randrange(alto_pantalla - self.rect.height)
         self.rect.x = 680
         
-        # self.audio = pygame.mixer.Sound("../multimedia/audio/bat_sound.mp3")
+        self.audio = pygame.mixer.Sound("../multimedia/audio/pet_sound.mp3")
 
         self.velocidad_x = 3
 
@@ -62,7 +62,7 @@ class Gusano(Dad):
         self.mitad_pantalla = ancho_pantalla // 2
         self.rect.x = random.randrange(self.mitad_pantalla, ancho_pantalla - self.rect.height)
 
-        self.audio = pygame.mixer.Sound("../multimedia/audio/bat_sound.mp3")
+        self.audio = pygame.mixer.Sound("../multimedia/audio/pet_sound.mp3")
 
         self.velocidad_x = 2
 
