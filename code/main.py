@@ -29,8 +29,10 @@ def main():
 
                 character.movimiento()
                 character.dibujar()
-                character.update_disparos()
                 
+                character.update_disparos(gusanos_array)
+                character.update_disparos(bats_array)
+
                 vidas.dibujar_vidas()
 
                 enemy.animacion()
@@ -49,6 +51,7 @@ def main():
                 
                 character.colision(bats_array , vidas_array_luffy)
                 character.colision(gusanos_array , vidas_array_luffy)
+
 
                 
                 pygame.display.flip()
