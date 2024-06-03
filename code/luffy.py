@@ -21,6 +21,7 @@ class Main_character(Sprite):
         self.rect.move_ip([10, 300])
 
         #Banderas para controlar el movimiento de luffy
+        self.especial = False
         self.direction_right = False
         self.direction_left = False
         self.ataquez = False
@@ -28,6 +29,7 @@ class Main_character(Sprite):
         self.parar = False
     
         #Variales numericas para controlar diferentes acciones de luffy 
+        self.cuenta_especial = 0
         self.cuenta_ataques = 0
         self.cuenta_salto = 10
         self.cuenta_pasos = 0
@@ -62,6 +64,7 @@ class Main_character(Sprite):
                 self.quieto = False
                 self.parar = False
                 self.cuenta_ataques = 0
+                self.cuenta_especial = 0
 
         #Movimiento a la izquierda
         if keys[pygame.K_LEFT]:
@@ -72,6 +75,7 @@ class Main_character(Sprite):
                 self.quieto = False
                 self.parar = False
                 self.cuenta_ataques = 0
+                self.cuenta_especial = 0
 
         if keys[pygame.K_z] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and self.cooldown_timer == 0:
             self.ataquez = True
@@ -80,6 +84,14 @@ class Main_character(Sprite):
             self.quieto = False
             self.parar = True
             self.cooldown_timer = self.cooldown_total  # Reiniciar el temporizador de cooldown
+
+        if keys[pygame.K_x] and not keys[pygame.K_z] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
+            self.especial = True
+            self.ataquez = False
+            self.direction_left = False
+            self.direction_right = False
+            self.quieto = False
+            self.parar = True
 
         #Si luffy esta saltando, no entra la solicitud de salto
         if not (self.salto):
@@ -90,6 +102,7 @@ class Main_character(Sprite):
                 self.parar = False
                 self.cuenta_pasos = 0
                 self.cuenta_ataques = 0
+                self.cuenta_especial = 0
 
         #Si luffy no esta saltando, se hace la subida y bajada del sprite de luffy
         else:
@@ -133,9 +146,12 @@ class Main_character(Sprite):
             #Se llama el disparo
             nuevo_disparo = Disparo(self.px, self.py)
             self.disparos.add(nuevo_disparo)
-            
             self.parar = False
             self.cuenta_ataques = 0
+
+        if self.cuenta_especial +1 >= len(ataque_especial) * self.anim_speed:
+            self.cuenta_ataques = 0
+            self.parar = False
 
         #Condicinales para movimientos de luffy 
         if self.direction_right and not self.quieto:
@@ -154,6 +170,10 @@ class Main_character(Sprite):
             screen.blit(ataquez[self.cuenta_ataques // self.anim_speed], (int(self.px), int(self.py)))
             self.cuenta_ataques += 1
 
+        elif self.especial and self.parar:
+            screen.blit(ataque_especial[self.cuenta_especial// self.anim_speed], (int(self.px), int(self.py)))
+            self.cuenta_especial += 1
+            
         #Para cuando luffy este quieto 
         else:
             screen.blit(quieto , (int(self.px), int(self.py)) )
