@@ -7,3 +7,4 @@ pygame.init()
 bats_array = []
 gusanos_array = []
 vidas_array_luffy = []
+vidas_array_totoro = []
