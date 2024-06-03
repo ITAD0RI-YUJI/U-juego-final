@@ -29,3 +29,5 @@ class Enemy(Dad):
         if objeto_chocando.rect.colliderect(self.rect):
             self.vida -= 1
             print("Totoro: " , objeto_chocando.vida)
+            
+        

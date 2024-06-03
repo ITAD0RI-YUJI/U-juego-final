@@ -21,7 +21,7 @@ class Main_character(Sprite):
         self.rect.move_ip([10, 300])
 
         #Banderas para controlar el movimiento de luffy
-        self.especial = False
+        self.especialx = False
         self.direction_right = False
         self.direction_left = False
         self.ataquez = False
@@ -37,6 +37,7 @@ class Main_character(Sprite):
         self.px = 10
         self.py = 300
         self.ancho = 40
+        self.cantidad_enemigos_muertos = 0
         
         #Velicudad de pasar de imagen en imagen
         self.anim_speed = 6
@@ -46,6 +47,8 @@ class Main_character(Sprite):
 
         # Grupo para manejar los disparos
         self.disparos = Group()
+        self.especial = Group()
+
 
         # Variables de cooldown para la habilidad de ataque
         self.cooldown_total = 100  #tiempo de cooldown en frames
@@ -85,14 +88,14 @@ class Main_character(Sprite):
             self.quieto = False
             self.parar = True
             self.cooldown_timer = self.cooldown_total  # Reiniciar el temporizador de cooldown
-
-        if keys[pygame.K_x] and not keys[pygame.K_z] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
-            self.especial = True
-            self.ataquez = False
-            self.direction_left = False
-            self.direction_right = False
-            self.quieto = False
-            self.parar2 = True
+        if self.cantidad_enemigos_muertos >= 10:
+            if keys[pygame.K_x] and not keys[pygame.K_z] and not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
+                self.especialx = True
+                self.ataquez = False
+                self.direction_left = False
+                self.direction_right = False
+                self.quieto = False
+                self.parar2 = True
 
         #Si luffy esta saltando, no entra la solicitud de salto
         if not (self.salto):
@@ -132,11 +135,31 @@ class Main_character(Sprite):
                     bicho.vida -= 1
                     bicho.audio.play()
                     print("Gusano: " , bicho.vida)
-
+                    self.cantidad_enemigos_muertos +=  1
+                    print(self.cantidad_enemigos_muertos)
                     if bicho.vida <= 0:
                         bicho_array.remove(objeto_chocando)
                     
                     disparo.kill()
+
+    def update_especial(self, bichos_array, bicho):
+        self.especial.update()
+
+        for especial in self.especial:
+            if especial.rect.x > ancho_pantalla:
+                especial.kill()
+
+            for objeto_chocando in bichos_array:
+                if especial.rect.colliderect(objeto_chocando.rect):
+                    bicho.vida -= 1
+                    bicho.audio.play()
+                    self.cantidad_enemigos_muertos = 0
+                    print("Gusano: " , bicho.vida)
+
+
+                    if bicho.vida <= 0:
+                        bichos_array.remove(objeto_chocando)
+
 
     def dibujar(self):
         #Contador de pasos
@@ -151,6 +174,8 @@ class Main_character(Sprite):
             self.cuenta_ataques = 0
 
         if self.cuenta_especial +1 >= len(ataque_especial) * self.anim_speed:
+            nueva_especial = Especial(self.px, self.py)
+            self.especial.add(nueva_especial)
             self.cuenta_especial = 0
             self.parar2 = False
 
@@ -171,7 +196,7 @@ class Main_character(Sprite):
             screen.blit(ataquez[self.cuenta_ataques // self.anim_speed], (int(self.px), int(self.py)))
             self.cuenta_ataques += 1
 
-        elif self.especial and self.parar2:
+        elif self.especialx and self.parar2:
             screen.blit(ataque_especial[self.cuenta_especial// self.anim_speed], (int(self.px), int(self.py)))
             self.cuenta_especial += 1
         #Para cuando luffy este quieto 
@@ -180,6 +205,8 @@ class Main_character(Sprite):
 
         # Dibujar disparos
         self.disparos.draw(screen)
+        self.especial.draw(screen)
+
 
     def colision(self , objeto_chocando_arreglo , array_vidas):
         for objeto_chocando in objeto_chocando_arreglo:
@@ -228,6 +255,19 @@ class Disparo(Sprite):
         self.rect.x = px + 50
         self.rect.y = py
         self.velocidad = 5
+
+    def update(self):
+        self.rect.x += self.velocidad
+
+class Especial(Sprite):
+    def __init__(self, px, py):
+        super().__init__()
+
+        self.image = especial
+        self.rect = self.image.get_rect()
+        self.rect.x = px + 50
+        self.rect.y = py
+        self.velocidad = 7
 
     def update(self):
         self.rect.x += self.velocidad
