@@ -148,12 +148,18 @@ class Main_character(Sprite):
                     
                     disparo.kill()
 
-    def update_especial(self, bichos_array, bicho):
+    def update_especial(self, bichos_array, bicho, enemy, array_vidas):
         self.especial.update()
 
         for especial in self.especial:
             if especial.rect.x > ancho_pantalla:
                 especial.kill()
+
+            if especial.rect.colliderect(enemy.rect):
+                enemy.vidas -= 1
+                especial.kill()
+                array_vidas.pop()
+                print(enemy.vidas)
 
             for objeto_chocando in bichos_array:
                 if especial.rect.colliderect(objeto_chocando.rect):
@@ -161,7 +167,6 @@ class Main_character(Sprite):
                     bicho.audio.play()
                     self.cantidad_enemigos_muertos = 0
                     print("Gusano: " , bicho.vida)
-
 
                     if bicho.vida <= 0:
                         bichos_array.remove(objeto_chocando)
