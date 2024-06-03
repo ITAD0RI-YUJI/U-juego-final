@@ -38,23 +38,23 @@ ataquez = [pygame.image.load("../multimedia/img/luffy_img/l_poder1.png"),
            pygame.image.load("../multimedia/img/luffy_img/l_poder6.png"),
            pygame.image.load("../multimedia/img/luffy_img/l_poder7.png"),]
 
-ataque_especial = [pygame.image.load("../imagenes/img/luffy_img/l_especial1.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial2.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial3.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial4.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial5.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial6.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial7.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial8.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial9.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial10.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial11.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial12.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial13.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial14.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial15.png"),
-                   pygame.image.load("../imagenes/img/luffy_img/l_especial16.png"),]
+ataque_especial = [pygame.image.load("../multimedia/img/luffy_img/l_especial1.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial2.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial3.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial4.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial5.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial6.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial7.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial8.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial9.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial10.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial11.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial12.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial13.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial14.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial15.png").convert_alpha(),
+                   pygame.image.load("../multimedia/img/luffy_img/l_especial16.png").convert_alpha(),]
 
 
-especial = pygame.image.load("../multimedia/img/luffy_img/especial.png")
+especial = pygame.image.load("../multimedia/img/luffy_img/special.png")
 disparoz= pygame.image.load("../multimedia/img/luffy_img/disparo.png")
