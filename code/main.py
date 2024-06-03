@@ -40,12 +40,12 @@ def main():
                 bat.add_array(bats_array , bat)
                 bat.appear(screen , bats_array)
 
-                gusano = Gusano(2 , gusano_movimento , 200 , gusanos_array)
+                gusano = Gusano(1, gusano_movimento , 200 , gusanos_array)
                 gusano.add_array(gusanos_array , gusano)
                 gusano.appear(screen , gusanos_array)
                 
                 character.colision(bats_array , vidas_array_luffy)
-                character.colision(gusanos_array , vidas_array_luffy)
+                #character.colision(gusanos_array , vidas_array_luffy)
 
                 character.update_disparos(gusanos_array , gusano)
                 character.update_disparos(bats_array , bat)
