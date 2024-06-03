@@ -49,6 +49,8 @@ def main():
 
                 character.update_disparos(gusanos_array , gusano)
                 character.update_disparos(bats_array , bat)
+                character.update_especial(gusanos_array, gusano)
+                character.update_especial(bats_array, bat)
 
 
                 
