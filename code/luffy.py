@@ -107,7 +107,7 @@ class Main_character(Sprite):
         # Actualizar la posición del rectángulo de Luffy
         self.rect.topleft = (self.px, self.py)
 
-    def update_disparos(self):
+    def update_disparos(self, bicho):
         self.disparos.update()
         # Disminuir el temporizador de cooldown
         if self.cooldown_timer > 0:
@@ -116,6 +116,11 @@ class Main_character(Sprite):
         for disparo in self.disparos:
             if disparo.rect.x > ancho_pantalla:
                 disparo.kill()
+
+            for objeto_chocando in bicho:
+                if disparo.rect.colliderect(objeto_chocando.rect):
+                    bicho.remove(objeto_chocando)
+                    disparo.kill()
 
 
 
