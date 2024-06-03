@@ -12,8 +12,7 @@ Proyecto final del curso de POO 2024-1 usando Pygame
 Crear un pograma con Pygame con el paradigma de programación *__POO__*, este debe contener un README y un diagrama en *__UML__*
 
 ### Sipnosis del Juego
-Luffy, el personaje principal del anime One Piece, del mangaka Eichiro Oda, se enfreta contra una de las criaturas más icónicas de las películas del 
-estudio Ghibli, Totoro, la de la película Mi vecino Totoro. 
+Luffy, el futuro rey de los piratas, quiere encontrar el One Piece, pero para esto debe enfrentarse a un duro y formidable oponente llamado Totoro. Este malvado personaje quiere asesinar a Luffy lanzándole arcillas explosivas. Todo esto es para robarle sus poderes y así volverse más poderoso y convertirse en el rey de los piratas para dominar el mundo. Acompaña a Luffy a vencer a Totoro. ¿Será Luffy capaz de vencer a Totoro?
 
 ### Controles del juego
 * __Mover:__
