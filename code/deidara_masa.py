@@ -104,7 +104,6 @@ class Gusano(Dad):
     def colision(self , objeto_chocando , array):
         if self.rect.colliderect(objeto_chocando.rect):
             self.vida -= 1
-            
 
             if self.vida <= 0:
                 array.pop()

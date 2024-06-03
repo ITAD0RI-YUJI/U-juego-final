@@ -30,11 +30,6 @@ class Enemy(Dad):
     def draw(self, screen):
         screen.blit(self.personaje_imagen, self.rect)
     
-    def colision(self , objeto_chocando):
-        if objeto_chocando.rect.colliderect(self.rect):
-            self.vida -= 1
-            print("Totoro: " , objeto_chocando.vida)
-
     def vidas_array_add(self):
         for x in range(self.vidas):
             self.array_vidas.append(self.vida_image)
@@ -44,3 +39,8 @@ class Enemy(Dad):
             pos_x = 10 + i * (self.rect_vida_image.width)  # Posición X con un espaciado de 10 píxeles entre las vidas
             pos_y = 50 
             screen.blit(self.array_vidas[i], (pos_x, pos_y))
+
+    def colision(self , objeto_chocando):
+            if self.rect.colliderect(objeto_chocando.rect):
+                self.vida -= 1
+                print("Totoro: " , objeto_chocando.vida)
