@@ -48,7 +48,7 @@ class Main_character(Sprite):
         self.disparos = Group()
 
         # Variables de cooldown para la habilidad de ataque
-        self.cooldown_total = 300  #tiempo de cooldown en frames
+        self.cooldown_total = 100  #tiempo de cooldown en frames
         self.cooldown_timer = 0
 
 
