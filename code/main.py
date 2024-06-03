@@ -40,7 +40,7 @@ def main():
                 bat.add_array(bats_array , bat)
                 bat.appear(screen , bats_array)
 
-                gusano = Gusano(1 , gusano_movimento , 200 , gusanos_array)
+                gusano = Gusano(1, gusano_movimento , 200 , gusanos_array)
                 gusano.add_array(gusanos_array , gusano)
                 gusano.appear(screen , gusanos_array)
                 

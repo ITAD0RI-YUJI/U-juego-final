@@ -27,6 +27,7 @@ class Main_character(Sprite):
         self.ataquez = False
         self.salto = False
         self.parar = False
+        self.parar2 = False
     
         #Variales numericas para controlar diferentes acciones de luffy 
         self.cuenta_especial = 0
@@ -91,7 +92,7 @@ class Main_character(Sprite):
             self.direction_left = False
             self.direction_right = False
             self.quieto = False
-            self.parar = True
+            self.parar2 = True
 
         #Si luffy esta saltando, no entra la solicitud de salto
         if not (self.salto):
@@ -150,8 +151,8 @@ class Main_character(Sprite):
             self.cuenta_ataques = 0
 
         if self.cuenta_especial +1 >= len(ataque_especial) * self.anim_speed:
-            self.cuenta_ataques = 0
-            self.parar = False
+            self.cuenta_especial = 0
+            self.parar2 = False
 
         #Condicinales para movimientos de luffy 
         if self.direction_right and not self.quieto:
@@ -170,10 +171,9 @@ class Main_character(Sprite):
             screen.blit(ataquez[self.cuenta_ataques // self.anim_speed], (int(self.px), int(self.py)))
             self.cuenta_ataques += 1
 
-        elif self.especial and self.parar:
+        elif self.especial and self.parar2:
             screen.blit(ataque_especial[self.cuenta_especial// self.anim_speed], (int(self.px), int(self.py)))
             self.cuenta_especial += 1
-            
         #Para cuando luffy este quieto 
         else:
             screen.blit(quieto , (int(self.px), int(self.py)) )
