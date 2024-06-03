@@ -125,8 +125,10 @@ class Main_character(Sprite):
             self.cuenta_pasos = 0
 
         if self.cuenta_ataques +1 >= len(ataquez) * self.anim_speed:
+            #Se llama el disparo
             nuevo_disparo = Disparo(self.px, self.py)
             self.disparos.add(nuevo_disparo)
+            
             self.parar = False
             self.cuenta_ataques = 0
 
@@ -194,7 +196,8 @@ class Sombrero(Main_character):
             pos_y = 10 
             screen.blit(self.hat_array[i], (pos_x, pos_y))
 
-class Disparo(pygame.sprite.Sprite):
+
+class Disparo(Sprite):
     def __init__(self, px, py):
         super().__init__()
 
