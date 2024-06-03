@@ -58,3 +58,5 @@ ataque_especial = [pygame.image.load("../multimedia/img/luffy_img/l_especial1.pn
 
 especial = pygame.image.load("../multimedia/img/luffy_img/special.png")
 disparoz= pygame.image.load("../multimedia/img/luffy_img/disparo.png")
+ganador_luffy = pygame.image.load("../multimedia/img/luffy_img/ganador.png")
+perdedor = pygame.image.load("../multimedia/img/luffy_img/perdedor.png")

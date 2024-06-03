@@ -10,12 +10,18 @@ from pygame.sprite import Group
 class Main_character(Sprite):
     def __init__(self):
         super().__init__()
-
+        self.final = True
         self.vida = 3
         self.velocidad = 3        
         self.quieto = quieto
         self.quieto.set_colorkey([0 , 0 , 0]) #Quitar el fondo negro que pone pygame         
         self.rect = self.quieto.get_rect()
+
+        #Para cuando luffy pierde
+        self.perdedor = perdedor
+        self.rectp = self.perdedor.get_rect()
+
+
         
         #Donde aparecera luffy en la pantalla
         self.rect.move_ip([10, 300])
@@ -219,7 +225,10 @@ class Main_character(Sprite):
                 print("Luffy: " , self.vida)
 
                 if self.vida <= 0:
-                    sys.exit()
+                    self.final = False
+                    screen.blit(self.perdedor, self.rectp)
+
+                    
 
 
 class Sombrero(Main_character):
