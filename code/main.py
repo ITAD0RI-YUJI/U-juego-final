@@ -40,6 +40,8 @@ def main():
                     enemy.animacion()
                     enemy.draw(screen)
                     enemy.colision(character)
+                    enemy.colision(character)
+
                     
                     bat = Bat(1 , bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
                     bat.add_array(bats_array , bat)
@@ -53,10 +55,11 @@ def main():
                     character.colision(bats_array , vidas_array_luffy)
                     character.colision(gusanos_array , vidas_array_luffy)
 
+
                     character.update_disparos(gusanos_array , gusano)
                     character.update_disparos(bats_array , bat)
-                    character.update_especial(gusanos_array, gusano)
-                    character.update_especial(bats_array, bat)
+                    character.update_especial(gusanos_array, gusano, enemy, vidas_array_totoro)
+                    character.update_especial(bats_array, bat, enemy, vidas_array_totoro)
 
 
                 
