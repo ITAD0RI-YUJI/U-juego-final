@@ -14,8 +14,10 @@ iniciar = inicio.iniciar_juego()
 def main():
     
     if iniciar:
-        enemy = Enemy(5 , totoro_movimiento , 800 , None)  # 800 milisegundos para cambiar la imagen
         character = Main_character()
+        
+        enemy = Enemy(5 , totoro_movimiento , 800 , None , vidas_array_totoro)  # 800 milisegundos para cambiar la imagen
+        enemy.vidas_array_add()
 
         vidas = Sombrero(vidas_array_luffy)
         vidas.vidas_array_add()
@@ -26,6 +28,8 @@ def main():
                     return
             else:
                 propiedades_pantalla()
+                
+                enemy.dibujar_vidas()
 
                 character.movimiento()
                 character.dibujar()
