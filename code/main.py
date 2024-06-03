@@ -27,34 +27,35 @@ def main():
                 if event.type == pygame.QUIT:
                     return
             else:
-                propiedades_pantalla()
-                
-                enemy.dibujar_vidas()
+                if character.final:
+                    propiedades_pantalla()
+                    
+                    enemy.dibujar_vidas()
 
-                character.movimiento()
-                character.dibujar()
+                    character.movimiento()
+                    character.dibujar()
 
-                vidas.dibujar_vidas()
+                    vidas.dibujar_vidas()
 
-                enemy.animacion()
-                enemy.draw(screen)
-                enemy.colision(character)
-                
-                bat = Bat(1 , bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
-                bat.add_array(bats_array , bat)
-                bat.appear(screen , bats_array)
+                    enemy.animacion()
+                    enemy.draw(screen)
+                    enemy.colision(character)
+                    
+                    bat = Bat(1 , bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
+                    bat.add_array(bats_array , bat)
+                    bat.appear(screen , bats_array)
 
-                gusano = Gusano(1, gusano_movimento , 200 , gusanos_array)
-                gusano.add_array(gusanos_array , gusano)
-                gusano.appear(screen , gusanos_array)
-                
-                character.colision(bats_array , vidas_array_luffy)
-                character.colision(gusanos_array , vidas_array_luffy)
+                    gusano = Gusano(1, gusano_movimento , 200 , gusanos_array)
+                    gusano.add_array(gusanos_array , gusano)
+                    gusano.appear(screen , gusanos_array)
+                    
+                    character.colision(bats_array , vidas_array_luffy)
+                    character.colision(gusanos_array , vidas_array_luffy)
 
-                character.update_disparos(gusanos_array , gusano)
-                character.update_disparos(bats_array , bat)
-                character.update_especial(gusanos_array, gusano)
-                character.update_especial(bats_array, bat)
+                    character.update_disparos(gusanos_array , gusano)
+                    character.update_disparos(bats_array , bat)
+                    character.update_especial(gusanos_array, gusano)
+                    character.update_especial(bats_array, bat)
 
 
                 
