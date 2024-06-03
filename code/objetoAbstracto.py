@@ -28,7 +28,3 @@ class Dad(ABC , Sprite):
     @abstractmethod
     def draw(self):
         pass
-    
-    @abstractmethod
-    def colision(self):
-        pass

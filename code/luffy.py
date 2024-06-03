@@ -107,7 +107,7 @@ class Main_character(Sprite):
         # Actualizar la posición del rectángulo de Luffy
         self.rect.topleft = (self.px, self.py)
 
-    def update_disparos(self, bicho):
+    def update_disparos(self, bicho_array , bicho):
         self.disparos.update()
         # Disminuir el temporizador de cooldown
         if self.cooldown_timer > 0:
@@ -117,9 +117,14 @@ class Main_character(Sprite):
             if disparo.rect.x > ancho_pantalla:
                 disparo.kill()
 
-            for objeto_chocando in bicho:
+            for objeto_chocando in bicho_array:
                 if disparo.rect.colliderect(objeto_chocando.rect):
-                    bicho.remove(objeto_chocando)
+                    bicho.vida -= 1
+                    print("Gusano: " , bicho.vida)
+
+                    if bicho.vida <= 0:
+                        bicho_array.remove(objeto_chocando)
+                    
                     disparo.kill()
 
 
@@ -130,8 +135,10 @@ class Main_character(Sprite):
             self.cuenta_pasos = 0
 
         if self.cuenta_ataques +1 >= len(ataquez) * self.anim_speed:
+            #Se llama el disparo
             nuevo_disparo = Disparo(self.px, self.py)
             self.disparos.add(nuevo_disparo)
+            
             self.parar = False
             self.cuenta_ataques = 0
 
@@ -199,7 +206,8 @@ class Sombrero(Main_character):
             pos_y = 10 
             screen.blit(self.hat_array[i], (pos_x, pos_y))
 
-class Disparo(pygame.sprite.Sprite):
+
+class Disparo(Sprite):
     def __init__(self, px, py):
         super().__init__()
 
