@@ -29,9 +29,6 @@ def main():
 
                 character.movimiento()
                 character.dibujar()
-                
-                character.update_disparos(gusanos_array)
-                character.update_disparos(bats_array)
 
                 vidas.dibujar_vidas()
 
@@ -42,15 +39,16 @@ def main():
                 bat = Bat(1 , bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
                 bat.add_array(bats_array , bat)
                 bat.appear(screen , bats_array)
-                bat.colision(Disparo(character.px , character.py) , bats_array)
 
                 gusano = Gusano(2 , gusano_movimento , 200 , gusanos_array)
                 gusano.add_array(gusanos_array , gusano)
                 gusano.appear(screen , gusanos_array)
-                gusano.colision(Disparo(character.px , character.py) , gusanos_array)
                 
                 character.colision(bats_array , vidas_array_luffy)
                 character.colision(gusanos_array , vidas_array_luffy)
+
+                character.update_disparos(gusanos_array , gusano)
+                character.update_disparos(bats_array , bat)
 
 
                 

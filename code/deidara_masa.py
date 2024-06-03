@@ -51,14 +51,6 @@ class Bat(Dad):
         if self.rect.left <= 0:
             self.bats_array.remove(delete_bat)
 
-    def colision(self , objeto_chocando , array):
-        if objeto_chocando.rect.colliderect(self.rect):
-            self.vida -= 1
-            print("Bat: " , objeto_chocando.vida)
-
-            if self.vida <= 0:
-                array.pop()
-
 
 class Gusano(Dad):
     def __init__(self, vida , animation, animation_time, pet):
@@ -112,7 +104,7 @@ class Gusano(Dad):
     def colision(self , objeto_chocando , array):
         if self.rect.colliderect(objeto_chocando.rect):
             self.vida -= 1
-            print("Gusano: " , self.vida)
+            
 
             if self.vida <= 0:
                 array.pop()
