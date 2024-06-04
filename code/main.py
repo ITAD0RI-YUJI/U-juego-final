@@ -59,7 +59,8 @@ def main():
                     character.update_disparos(bats_array , bat)
                     character.update_especial(gusanos_array, gusano, enemy, vidas_array_totoro)
                     character.update_especial(bats_array, bat, enemy, vidas_array_totoro)
-
+                else:
+                    pygame.mixer.music.pause()
 
                 
                 pygame.display.flip()
