@@ -54,6 +54,8 @@ class Main_character(Sprite):
 
         #Sonido de daño
         self.luffy_sound = pygame.mixer.Sound("../multimedia/audio/luffy_ouch.mp3")
+        self.luffy_sound_ganar = pygame.mixer.Sound("../multimedia/audio/l_ganando.mp3")
+        self.luffy_sound_perder = pygame.mixer.Sound("../multimedia/audio/l_perdiendo.mp3")
 
         #Sonido de totoro daño
         self.totoro_sound = pygame.mixer.Sound("../multimedia/audio/totoro_daño.mp3")
