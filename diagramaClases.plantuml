@@ -1,0 +1,75 @@
+@startuml enemigos
+
+!define ABSTRACT abstract
+!define INTERFACE interface
+
+package "pygame.sprite" {
+    class Sprite {
+    }
+}
+
+package "abc" {
+    ABSTRACT class ABC {
+    }
+}
+
+package "pygame" {
+    class mixer {
+        Sound
+    }
+    class time {
+        get_ticks
+    }
+}
+
+package "objetoAbstracto" {
+}
+
+ABSTRACT class Dad {
+    +vida: int
+    +images_animation: List
+    +current_image: int
+    +personaje_imagen: Image
+    +rect: Rect
+    +animation_time: int
+    +last_update: int
+    +contador: int
+    +bats_array: List
+    __init__(animation: List, animation_time: int, pet: List)
+    {abstract} animacion()
+    {abstract} draw(screen: Surface)
+}
+
+class Bat {
+    +vida: int
+    +rect: Rect
+    +audio: Sound
+    +velocidad_x: int
+    __init__(vida: int, animation: List, animation_time: int, pet: List)
+    animacion()
+    draw(screen: Surface)
+    mover()
+    add_array(array: List, pet: Dad)
+    appear(screen: Surface, array: List)
+    delete(delete_bat: Bat)
+}
+
+class Gusano {
+    +vida: int
+    +mitad: int
+    +rect: Rect
+    +audio: Sound
+    +velocidad_x: int
+    __init__(vida: int, animation: List, animation_time: int, pet: List)
+    animacion()
+    draw(screen: Surface)
+    mover()
+    add_array(array: List, pet: Dad)
+    appear(screen: Surface, array: List)
+    delete(delete_bat: Gusano)
+}
+
+Dad <|-- Bat
+Dad <|-- Gusano
+ABC <|-- Dad
+Sprite <|-- Dad
