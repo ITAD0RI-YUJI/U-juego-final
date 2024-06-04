@@ -100,11 +100,3 @@ class Gusano(Dad):
     def delete(self , delete_bat):
         if self.rect.left <= 0:
             self.bats_array.remove(delete_bat) 
-    
-    def colision(self , objeto_chocando , array):
-        if self.rect.colliderect(objeto_chocando.rect):
-            self.vida -= 1
-            
-
-            if self.vida <= 0:
-                array.pop()
