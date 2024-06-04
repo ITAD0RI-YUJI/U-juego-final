@@ -1,4 +1,4 @@
-@startuml clases
+@startuml clasesII
 !define Sprite pygame.sprite.Sprite
 !define ABC abc.ABC
 !define abstractmethod abc.abstractmethod
@@ -52,9 +52,104 @@ class Gusano {
     + delete(self, delete_bat)
 }
 
+class Main_character {
+    -- Atributos --
+    - bool final
+    - int vida
+    - int velocidad
+    - Surface quieto
+    - Rect rect
+    - Surface perdedor
+    - Rect rectp
+    - Surface ganador
+    - Rect rectg
+    - bool especialx
+    - bool direction_right
+    - bool direction_left
+    - bool ataquez
+    - bool salto
+    - bool parar
+    - bool parar2
+    - int cuenta_especial
+    - int cuenta_ataques
+    - int cuenta_salto
+    - int cuenta_pasos
+    - int px
+    - int py
+    - int ancho
+    - int cantidad_enemigos_muertos
+    - int anim_speed
+    - Sound luffy_sound
+    - Sound luffy_sound_ganar
+    - Sound luffy_sound_perder
+    - Sound totoro_sound
+    - Group disparos
+    - Group especial
+    - int cooldown_total
+    - int cooldown_timer
+    
+    -- Métodos --
+    + __init__(self)
+    + movimiento(self)
+    + update_disparos(self, bicho_array, bicho)
+    + update_especial(self, bichos_array, bicho, enemy, array_vidas)
+    + dibujar(self)
+    + colision(self, objeto_chocando_arreglo, array_vidas)
+}
+
+class Sombrero {
+    -- Atributos --
+    - Surface vida_image
+    - Rect rect
+    - list hat_array
+    
+    -- Métodos --
+    + __init__(self, array)
+    + vidas_array_add(self)
+    + dibujar_vidas(self)
+}
+
+class Disparo {
+    -- Atributos --
+    - int velocidad
+    
+    -- Métodos --
+    + __init__(self, px, py)
+    + update(self)
+}
+
+class Especial {
+    -- Atributos --
+    - int velocidad
+    
+    -- Métodos --
+    + __init__(self, px, py)
+    + update(self)
+}
+
+class Enemy {
+    -- Atributos --
+    - int vidas
+    - list array_vidas
+    - Surface vida_image
+    - Rect rect_vida_image
+    
+    -- Métodos --
+    + __init__(self, vida, animation, animation_time, pet, array_vidas)
+    + animacion(self)
+    + draw(self, screen)
+    + vidas_array_add(self)
+    + dibujar_vidas(self)
+}
+
 Dad <|-- Bat
 Dad <|-- Gusano
+Dad <|-- Enemy
 Dad ..> ABC : implements
 Dad ..> Sprite : extends
+Main_character <|-- Sombrero
+Sprite <|-- Main_character
+Sprite <|-- Disparo
+Sprite <|-- Especial
 
 @enduml

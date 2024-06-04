@@ -33,4 +33,4 @@ Para realizar un ataque con Luffy usa las teclas:
 
 
 __Diagrama de clases:__
-![Diagrama de clases](/out/diagramaClases/clases.png)
+![Diagrama de clases](/out/diagramaClases/clasesII.png)
