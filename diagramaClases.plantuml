@@ -142,14 +142,31 @@ class Enemy {
     + dibujar_vidas(self)
 }
 
+class Main{
+    -- Atributos --
+    - bool running
+
+    -- Metodos --
+    + __init__(self)
+    + ejecutar(self)
+}
+
 Dad <|-- Bat
 Dad <|-- Gusano
 Dad <|-- Enemy
 Dad ..> ABC : implements
 Dad ..> Sprite : extends
-Main_character <|-- Sombrero
+Main_character o-- Sombrero
+Main_character o-- Disparo
+Main_character o-- Especial
 Sprite <|-- Main_character
 Sprite <|-- Disparo
 Sprite <|-- Especial
+
+Main *-- Enemy
+Main *-- Main_character
+Main *-- Gusano
+Main *-- Bat
+
 
 @enduml
