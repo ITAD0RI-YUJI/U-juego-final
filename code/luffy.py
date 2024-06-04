@@ -149,11 +149,10 @@ class Main_character(Sprite):
                 if disparo.rect.colliderect(objeto_chocando.rect):
                     bicho.vida -= 1
                     bicho.audio.play()
-                    print("Gusano: " , bicho.vida)
                     self.cantidad_enemigos_muertos +=  1
+                    print("Cantidad de enemigos asesinados")
                     print(self.cantidad_enemigos_muertos)
-                    if bicho.vida <= 0:
-                        bicho_array.remove(objeto_chocando)
+                    bicho_array.remove(objeto_chocando)
                     
                     disparo.kill()
 
@@ -169,7 +168,6 @@ class Main_character(Sprite):
                 enemy.vidas -= 1
                 especial.kill()
                 array_vidas.pop()
-                print(enemy.vidas)
                 if enemy.vidas <= 0:
                     self.final = False
                     screen.blit(self.ganador, self.rectg)
@@ -180,10 +178,7 @@ class Main_character(Sprite):
                     bicho.vida -= 1
                     bicho.audio.play()
                     self.cantidad_enemigos_muertos = 0
-                    print("Gusano: " , bicho.vida)
-                    
-                    if bicho.vida <= 0:
-                        bichos_array.remove(objeto_chocando)
+                    bichos_array.remove(objeto_chocando)
 
 
     def dibujar(self):
@@ -241,7 +236,6 @@ class Main_character(Sprite):
                 objeto_chocando_arreglo.remove(objeto_chocando)
                 self.luffy_sound.play()
                 array_vidas.pop()
-                print("Luffy: " , self.vida)
 
                 if self.vida <= 0:
                     self.final = False
