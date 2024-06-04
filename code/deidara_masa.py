@@ -84,7 +84,6 @@ class Gusano(Dad):
 
     def mover(self):
         self.rect.x -= self.velocidad_x
-        # self.audio.play()
 
     def add_array(self , array , pet):
         if random.randint(0 , 100) % 10 == 0 and len(array) < 1:
