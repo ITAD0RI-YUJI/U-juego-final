@@ -25,3 +25,7 @@ Para poder mover al avatar usa las flechas del teclado:
 * __Armas:__
 Para realizar un ataque con Luffy usa las teclas:
     - (Z) Atacar Puño
+
+
+__Diagrama de clases:__
+![Diagrama de clases](/out/diagramaClases/enemigos.png)

@@ -22,11 +22,6 @@ package "pygame" {
     }
 }
 
-package "pantalla" {
-    ancho_pantalla
-    alto_pantalla
-}
-
 package "objetoAbstracto" {
 }
 
