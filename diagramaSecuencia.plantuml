@@ -1,0 +1,25 @@
+@startuml secuencia
+actor Usuario
+participant "Menu" as Menu
+participant "Main_character" as Main_character
+participant "Enemy" as Enemy
+participant "Bat" as Bat
+participant "Gusano" as Gusano
+
+User -> Menu: Iniciar juego
+Menu -> Main_character: Iniciar juego
+Main_character -> Enemy: Iniciar juego
+Enemy -> Main_character: Actualizar vida
+Main_character -> Bat: Colisión con murciélagos
+Main_character -> Gusano: Colisión con gusanos
+Main_character -> Bat: Actualizar disparos
+Main_character -> Gusano: Actualizar disparos
+Main_character -> Enemy: Actualizar ataques especiales
+Main_character -> Enemy: Actualizar disparos
+Main_character -> Main_character: Actualizar movimiento
+Main_character -> Main_character: Dibujar personaje
+Main_character -> Main_character: Dibujar vidas
+Main_character -> Bat: Aparecer murciélagos
+Main_character -> Gusano: Aparecer gusanos
+Main_character -> Screen: Mostrar pantalla
+@enduml

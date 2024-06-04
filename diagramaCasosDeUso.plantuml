@@ -1,0 +1,28 @@
+@startuml casos de uso
+left to right direction
+skinparam actor {
+    BackgroundColor PaleGreen
+    BorderColor DarkGreen
+}
+
+actor Usuario as U
+actor Juego as J
+
+U --> (Iniciar juego)
+J --> (Jugar)
+J --> (Finalizar juego)
+(Jugar) --> (Atacar)
+(Jugar) --> (Moverse)
+(Atacar) --> (Disparar)
+(Atacar) --> (Ataque especial)
+(Disparar) --> (Impactar enemigo)
+(Impactar enemigo) --> (Reducir vida enemigo)
+(Moverse) --> (Saltar)
+(Moverse) --> (Mover a la derecha)
+(Moverse) --> (Mover a la izquierda)
+(Saltar) --> (Cambiar posición vertical)
+(Mover a la derecha) --> (Cambiar posición horizontal)
+(Mover a la izquierda) --> (Cambiar posición horizontal)
+(Finalizar juego) --> (Mostrar resultado)
+(Mostrar resultado) --> (Mostrar mensaje de victoria/derrota)
+@enduml
