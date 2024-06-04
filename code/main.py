@@ -61,7 +61,7 @@ def main():
                     character.update_especial(bats_array, bat, enemy, vidas_array_totoro)
                 else:
                     pygame.mixer.music.pause()
-
+    
                 
                 pygame.display.flip()
 
