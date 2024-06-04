@@ -21,6 +21,10 @@ class Main_character(Sprite):
         self.perdedor = perdedor
         self.rectp = self.perdedor.get_rect()
 
+        #Para cuando luffy gana
+        self.ganador = ganador_luffy
+        self.rectg = self.ganador.get_rect()
+
 
         
         #Donde aparecera luffy en la pantalla
@@ -50,6 +54,9 @@ class Main_character(Sprite):
 
         #Sonido de daño
         self.luffy_sound = pygame.mixer.Sound("../multimedia/audio/luffy_ouch.mp3")
+
+        #Sonido de totoro daño
+        self.totoro_sound = pygame.mixer.Sound("../multimedia/audio/totoro_daño.mp3")
 
         # Grupo para manejar los disparos
         self.disparos = Group()
@@ -156,10 +163,15 @@ class Main_character(Sprite):
                 especial.kill()
 
             if especial.rect.colliderect(enemy.rect):
+                self.totoro_sound.play()
                 enemy.vidas -= 1
                 especial.kill()
                 array_vidas.pop()
                 print(enemy.vidas)
+                if enemy.vidas <= 0:
+                    self.final = False
+                    screen.blit(self.ganador, self.rectg)
+
 
             for objeto_chocando in bichos_array:
                 if especial.rect.colliderect(objeto_chocando.rect):
@@ -167,7 +179,7 @@ class Main_character(Sprite):
                     bicho.audio.play()
                     self.cantidad_enemigos_muertos = 0
                     print("Gusano: " , bicho.vida)
-
+                    
                     if bicho.vida <= 0:
                         bichos_array.remove(objeto_chocando)
 
