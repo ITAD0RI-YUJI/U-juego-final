@@ -40,7 +40,3 @@ class Enemy(Dad):
             pos_y = 50 
             screen.blit(self.array_vidas[i], (pos_x, pos_y))
 
-    def colision(self , objeto_chocando):
-            if self.rect.colliderect(objeto_chocando.rect):
-                self.vida -= 1
-                print("Totoro: " , objeto_chocando.vida)

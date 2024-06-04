@@ -39,8 +39,6 @@ def main():
 
                     enemy.animacion()
                     enemy.draw(screen)
-                    enemy.colision(character)
-                    enemy.colision(character)
 
                     
                     bat = Bat(1 , bat_movimiento , 200 , bats_array) #Colocar este dentro del while, así creerá nuevas instancias
@@ -60,8 +58,15 @@ def main():
                     character.update_disparos(bats_array , bat)
                     character.update_especial(gusanos_array, gusano, enemy, vidas_array_totoro)
                     character.update_especial(bats_array, bat, enemy, vidas_array_totoro)
+
                 else:
                     pygame.mixer.music.pause()
+
+                    if character.vida > 0:
+                        character.luffy_sound_ganar.play()
+                    
+                    else:
+                        character.luffy_sound_perder.play()
 
                 
                 pygame.display.flip()
